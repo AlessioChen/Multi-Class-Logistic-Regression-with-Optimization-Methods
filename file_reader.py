@@ -1,4 +1,4 @@
-def get_dna_data(file_name):
+def read_file(file_name, features_numbers):
     with open(file_name, 'r') as f:
         classes = []
         features = []
@@ -9,11 +9,11 @@ def get_dna_data(file_name):
             classes.append(line[0])
 
             line = line[2:]
-            feature = [0] * 180
+            feature = [0] * features_numbers
 
             for l in line.split(" "):
                 key, value = l.split(":")
-                feature[int(key) - 1] = int(value)
+                feature[int(key) - 1] = float(value)
 
             features.append(feature)
 
